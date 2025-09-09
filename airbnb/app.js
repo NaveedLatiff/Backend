@@ -6,6 +6,7 @@ const path=require('path');
 const rootDir=require('./utils/pathUtils');
 
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // set EJS
 app.set('view engine', 'ejs');
@@ -14,8 +15,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(userRouter);
 app.use('/host',hostRouter);
 
-app.use((req,res)=>{
-    res.status(404).sendFile(path.join(rootDir,'views','404.html'))
+app.use((req, res) => {
+    res.status(404).render('404', { title: "404" });
 });
 
 app.listen(3000,()=>{

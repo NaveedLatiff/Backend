@@ -4,16 +4,16 @@
             <% data.forEach(x=>{ %>
                 <div class="border-2 border-blue-900 mt-1.5 w-[50%] py-1 flex flex-col justify-center items-center">
                     <p>
-                        Name:<%=x.name %>
+                        Name:<%=x.fullName %>
                     </p>
                     <p>
-                        City:<%=x.city %>
+                        City:<%=x.houseCity %>
                     </p>
                     <p>
-                        Price:<%=x.price %>
+                        Price:<%=x.housePrice %>
                     </p>
                     <p>
-                        Rooms:<%=x.rooms %>
+                        Rooms:<%=x.houseRooms %>
                     </p>
                 </div>
                 <% })%>

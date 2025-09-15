@@ -1,9 +1,0 @@
-<%- include('partials/header',{title:title})%>
-    <form class="h-[300px] border-2 border-black flex flex-col mt-2.5 justify-center items-center" action='/host/rent-house' method='POST'>
-        <input class="w-[50%] pl-1.5 border-2 border-blue-950 mt-1.5" type=text name=fullName placeholder="Enter Your Full Name" />
-        <input class="w-[50%] pl-1.5 border-2 border-blue-950 mt-1.5" type=text name=houseCity placeholder="Enter Your House City" />
-        <input class="w-[50%] pl-1.5 border-2 border-blue-950 mt-1.5" type=text name=housePrice placeholder="Enter the Price"/>
-        <input class="w-[50%] pl-1.5 border-2 border-blue-950 mt-1.5" type=text name=houseRooms placeholder="Enter House Rooms"/>
-        <input class="w-[50%] pl-1.5 border-2 border-blue-950 mt-1.5 hover:text-white hover:bg-black hover:border-none" type='submit' /> 
-    </form>
-<%- include('partials/footer')%>

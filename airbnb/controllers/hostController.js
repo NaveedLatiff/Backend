@@ -1,7 +1,8 @@
 const registeredHouse = require('../models/houses');
 const fs = require('fs');
-const path=require('path');
-const rootDir=require('../utils/pathUtils');
+const path = require('path');
+const rootDir = require('../utils/pathUtils');
+const { title } = require('process');
 exports.rentHouse = (req, res) => {
     res.render('host/rentHome', { title: "Rent-House" })
 }
@@ -26,12 +27,46 @@ exports.deleteHome = (req, res) => {
         let findHouses = houses.filter(x => x.houseId != houseId);
         console.log(findHouses)
         const housesDataPath = path.join(rootDir, 'data', 'houses.json');
-        fs.writeFile(housesDataPath,JSON.stringify(findHouses),(err)=>{
-            if(err){
+        fs.writeFile(housesDataPath, JSON.stringify(findHouses), (err) => {
+            if (err) {
                 console.log("Error while deleting");
             }
-                res.render('host/host-houses-list', { title: "Homes", data: findHouses })
-            
+            res.render('host/host-houses-list', { title: "Homes", data: findHouses })
+
         })
     })
 }
+
+exports.editHome = (req, res) => {
+    let { houseId } = req.body;
+    registeredHouse.fetch((houses) => {
+        let findHouse = houses.find(x => x.houseId == houseId);
+        // console.log(findHouse);
+        res.render('host/editHouse', { title: "Edit", data: findHouse });
+    });
+
+};
+
+exports.editSuccessfully = (req, res) => {
+    let { houseId, fullName, houseCity, housePrice, houseRooms, houseImg } = req.body;
+    registeredHouse.fetch((houses) => {
+        let findHouse = houses.find(x => x.houseId == houseId);
+        console.log(findHouse)
+        if (findHouse) {
+            findHouse.fullName = fullName;
+            findHouse.houseCity = houseCity;
+            findHouse.housePrice = housePrice;
+            findHouse.houseRooms = houseRooms;
+            findHouse.houseImg = houseImg;
+            const housesDataPath = path.join(rootDir, 'data', 'houses.json');
+            fs.writeFile(housesDataPath,JSON.stringify(houses),(err)=>{
+                if(err){
+                    console.log("Edit Failed")
+                }
+                res.render('host/editSuccessfully',{title:"Edit Done"})
+            })
+        }
+
+    });
+}
+

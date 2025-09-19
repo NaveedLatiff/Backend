@@ -1,0 +1,45 @@
+<%- include('../partials/header',{title:title})%>
+
+    <div class="flex flex-col md:flex-row h-[calc(100vh-60px)] w-full">
+        <div class="flex justify-center items-center  h-[300px]  p-4">
+            <img src="<%= data.houseImg %>" alt="House Image"
+                class="h-full w-[330px] object-cover rounded-2xl shadow-lg border-2 border-gray-300">
+        </div>
+        <div class="flex-1 flex flex-col justify-center px-6 py-4">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">
+                <%= data.fullName %>’s Home
+            </h2>
+            <p class="text-gray-700 leading-relaxed mb-4">
+                This beautiful home is designed with comfort and elegance in mind, offering a warm and welcoming
+                atmosphere
+                from the moment you step inside. Located in a prime area of
+                <span class="font-semibold">
+                    <%= data.houseCity %>
+                </span>, it provides easy access to local markets, schools,
+                and public transportation. With <span class="font-semibold">
+                    <%= data.houseRooms %>
+                </span> spacious rooms,
+                the interiors are thoughtfully designed with large windows and plenty of natural light.
+            </p>
+            <p class="text-gray-700 leading-relaxed mb-4">
+                Modern finishes and high-quality materials enhance the overall appeal, ensuring durability and style.
+                Outside, the property features a well-maintained exterior with inviting surroundings.
+                Whether for daily living or long-term investment, this home blends practicality with sophistication —
+                the perfect choice for individuals and families who value both convenience and lifestyle.
+            </p>
+            <div class="h-full flex justify-between ">
+                <p class="text-xl font-semibold text-blue-700 mt-2">Price: $<%= data.housePrice %>
+                        <form action="/favourites" method="POST">
+                            <input type="hidden" name="houseId" value="<%= data.houseId %>">
+                            <button type="submit"
+                                class="py-1 px-4 rounded-2xl cursor-pointer border-2 border-black hover:bg-red-700 hover:text-white">
+                                <%= data.isFavourite ? "Remove from Favourites" : "Add to Favourites" %>
+                            </button>
+                        </form>
+            </div>
+            </p>
+        </div>
+
+    </div>
+
+    <%- include('../partials/footer') %>

@@ -1,7 +1,7 @@
 const mongodb = require('mongodb');
 const mongoClient = mongodb.MongoClient;
-
-const mongoUrl = "mongodb+srv://root:root@naveed.abihchq.mongodb.net/?retryWrites=true&w=majority&appName=Naveed";
+require('dotenv').config();
+const mongoUrl = process.env.MONGO_URL;
 
 let _db;
 

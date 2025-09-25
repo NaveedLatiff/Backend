@@ -6,12 +6,13 @@ const {hostHomes}=require('../controllers/hostController');
 const {deleteHome}=require('../controllers/hostController');
 const {editHome}=require('../controllers/hostController');
 const {editSuccessfully}=require('../controllers/hostController');
+const isAuth=require('../middleware/isAuth');
 
-hostRouter.get('/rent-house',rentHouse);
-hostRouter.post('/rent-house',thankUser);
-hostRouter.get('/homes',hostHomes);
-hostRouter.post('/homes',deleteHome);
-hostRouter.post('/:houseId/edit',editHome);
-hostRouter.post('/:houseId/edited',editSuccessfully);
+hostRouter.get('/rent-house',isAuth,rentHouse);
+hostRouter.post('/rent-house',isAuth,thankUser);
+hostRouter.get('/homes',isAuth,hostHomes);
+hostRouter.post('/homes',isAuth,deleteHome);
+hostRouter.post('/:houseId/edit',isAuth,editHome);
+hostRouter.post('/:houseId/edited',isAuth,editSuccessfully);
 
 module.exports = hostRouter

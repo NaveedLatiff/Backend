@@ -49,7 +49,7 @@ exports.editHome = async (req, res) => {
     try {
         let house = await House.findOne({houseId})
         if (!house) {
-            return res.status(404).render('404', { title: "House Not Found" })
+            return res.status(404).render('404', { title: "House Not Found" })  
         }
         res.render('host/editHouse', { title: "Edit", data: house });
     }

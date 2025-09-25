@@ -8,7 +8,7 @@ app.use(express.urlencoded({ extended: true }));
 exports.showData = async (req, res) => {
     try {
         const houses = await House.find()
-        res.render('store/index', { data: houses, title: "Home" });
+        res.render('store/index', { data: houses, title: "Home" });     
     } catch (err) {
         res.status(500).render('404', { title: "Data Not Found" });
         console.log("Error while rendering Data");

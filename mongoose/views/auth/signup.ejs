@@ -1,0 +1,20 @@
+<%- include('../partials/header',{title:title})%>
+
+    <div class="flex items-center justify-center h-screen ">
+        <form class=" h-[50vh] w-[70vw] border-2 border-black flex flex-col justify-center items-center gap-2"
+            action="/signup" method="POST">
+            <input class="w-[60%] h-[50px] pl-1.5 border-2 border-blue-950" type="text" name="name"
+                placeholder="Full Name" />
+            <input class="w-[60%] h-[50px] pl-1.5 border-2 border-blue-950" type="email" name="email"
+                placeholder="Email" />
+            <input class="w-[60%] h-[50px] pl-1.5 border-2 border-blue-950" type="password" name="password"
+                placeholder="Password" />
+            <button class="px-4 py-2 bg-blue-500 text-white rounded cursor-pointer  ">Signup</button>
+            <%if(error){ %>
+                <p><%=error%></p>
+           <% } %>
+            <p>Already have an account? <a href="/login" class="text-blue-900">login</a></p>
+        </form>
+    </div>
+
+    <%- include('../partials/footer')%>

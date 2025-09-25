@@ -6,11 +6,12 @@ const {getHousesList}=require('../controllers/storeController');
 const {getFavourites}=require('../controllers/storeController')
 const {getDetails}=require('../controllers/storeController');
 const {toggleFavourite}=require('../controllers/storeController');
+const isAuth=require('../middleware/isAuth');
 
 storeRouter.get('/',showData);
-storeRouter.get('/bookings',getBookings);
-storeRouter.get('/homes',getHousesList);
-storeRouter.get('/favourites',getFavourites);
-storeRouter.get('/homes/:houseId',getDetails);
-storeRouter.post('/favourites',toggleFavourite);
+storeRouter.get('/bookings',isAuth,getBookings);
+storeRouter.get('/homes',isAuth,getHousesList);
+storeRouter.get('/favourites',isAuth,getFavourites);
+storeRouter.get('/homes/:houseId',isAuth,getDetails);
+storeRouter.post('/favourites',isAuth,toggleFavourite);
 module.exports=storeRouter;

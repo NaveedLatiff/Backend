@@ -9,6 +9,14 @@
                 placeholder="Email" />
             <input class="w-[60%] h-[50px] pl-1.5 border-2 border-blue-950" type="password" name="password"
                 placeholder="Password" />
+                <div class="flex justify-center gap-2.5 w-[60%]">
+                        <label for="host" class="cursor-pointer">
+                            <input class="cursor-pointer" type="radio" name="role" value="host" id="host">Host
+                        </label>
+                        <label for="user" class="cursor-pointer">
+                            <input class="cursor-pointer" type="radio" name="role" value="user" id="user">User
+                        </label>
+                </div>
             <button class="px-4 py-2 bg-blue-500 text-white rounded cursor-pointer  ">Signup</button>
             <%if(error){ %>
                 <p><%=error%></p>

@@ -24,23 +24,7 @@
 
                         </p>
                     </div>
-                                       <div class="flex justify-between pt-2">
-                        <div class="flex gap-2 ">
-                            <p
-                                class="bg-blue-700 py-1 px-4 rounded-2xl text-white cursor-pointer border-2 border-black hover:bg-transparent hover:text-black ">
-                                <a href="/homes/<%= x.houseId %>">Details</a></p>
-                            <p
-                                class="bg-green-700 py-1 px-4 rounded-2xl text-white cursor-pointer border-2 border-black hover:bg-transparent hover:text-black ">
-                                Book</p>
-                        </div>
-                        <form action="/favourites" method="POST">
-                            <input type="hidden" name="houseId" value="<%= x.houseId %>">
-                            <button type="submit"
-                                class="py-1 px-4 rounded-2xl cursor-pointer border-2 border-black hover:bg-red-700 hover:text-white">
-                                <%= x.isFavourite ? "Remove from Favourites" : "Add to Favourites" %>
-                            </button>
-                        </form>
-                    </div>
+                    
                 </div>
                 <% })%>
         </div>

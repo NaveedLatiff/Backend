@@ -8,7 +8,6 @@ const houseSchema = new mongoose.Schema({
     houseRooms: Number,
     houseImg: String,
     houseId: { type: String, default: () => crypto.randomUUID(), },
-    isFavourite: { type: Number, default: 0 }
 })
 
 const House = mongoose.model("houses", houseSchema);

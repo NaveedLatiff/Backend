@@ -33,7 +33,11 @@
                             <input type="hidden" name="houseId" value="<%= data.houseId %>">
                             <button type="submit"
                                 class="py-1 px-4 rounded-2xl cursor-pointer border-2 border-black hover:bg-red-700 hover:text-white">
-                                <%= data.isFavourite ? "Remove from Favourites" : "Add to Favourites" %>
+                                <% if (favourites.includes(data.houseId)) { %>
+                                    Remove from Favourites
+                                    <% } else { %>
+                                        Add to Favourites
+                                        <% } %>
                             </button>
                         </form>
             </div>

@@ -1,15 +1,18 @@
-const bcrypt=require("bcrypt")
+const bcrypt = require("bcrypt")
 const User = require('../models/auth');
 
 exports.getSignup = (req, res) => {
     if (req.session.isLoggedIn) {
         return res.redirect('/');
     }
-    res.render('auth/signup', { title: "Signup",error:null });
+    res.render('auth/signup', { title: "Signup", error: null });
 };
 
 exports.postSignup = async (req, res) => {
-    const { email, name, password } = req.body
+    let { email, name, password, role } = req.body
+    if (role == undefined) {
+        role = "user";
+    }
     try {
         let existingUser = await User.findOne({ email })
         if (existingUser) {
@@ -22,16 +25,17 @@ exports.postSignup = async (req, res) => {
         const user = await User.create({
             name: name,
             email: email,
-            password:hashedPassword
+            password: hashedPassword,
+            role
         })
         req.session.isLoggedIn = true;
-        req.session.user = user;
-
+        req.session.userId = user._id;
+        req.session.userRole = user.role;
         res.redirect('/')
-        console.log(email, name, password)
+        console.log(email, name, password, role)
     } catch (err) {
         res.status(500).render("404", { title: "Signup Failed" });
-        console.log("Error whilw Signup",err)
+        console.log("Error whilw Signup", err)
     }
 }
 
@@ -42,8 +46,8 @@ exports.getLogin = (req, res) => {
     res.render('auth/login', { title: "Login", error: null });
 }
 
-exports.postLogin =async (req, res) => {
-     const { email, password } = req.body;
+exports.postLogin = async (req, res) => {
+    const { email, password } = req.body;
 
     try {
         const user = await User.findOne({ email });
@@ -61,9 +65,8 @@ exports.postLogin =async (req, res) => {
                 error: "Invalid Email or Password",
             });
         }
-
         req.session.isLoggedIn = true;
-        req.session.user = user;
+        req.session.userId = user._id;
 
         console.log("Login successful:", email);
         return res.redirect("/");

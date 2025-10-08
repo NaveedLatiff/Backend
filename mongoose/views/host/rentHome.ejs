@@ -1,11 +1,11 @@
 <%- include('../partials/header',{title:title})%>
     <h1 class="text-center text-red-900 text-3xl font-extrabold">Register Your House Below</h1>
-    <form class=" border-2 border-black flex flex-col mt-2.5 justify-center items-center" action='/host/rent-house' method='POST'>
+    <form class=" border-2 border-black flex flex-col mt-2.5 justify-center items-center" action='/host/rent-house' method='POST' enctype="multipart/form-data">
         <input class="w-[50%] h-[50px] pl-1.5 border-2 border-blue-950 mt-1.5" type=text name=fullName placeholder="Enter Your Full Name" />
         <input class="w-[50%] h-[50px] pl-1.5 border-2 border-blue-950 mt-1.5" type=text name=houseCity placeholder="Enter Your House City" />
         <input class="w-[50%] h-[50px] pl-1.5 border-2 border-blue-950 mt-1.5" type=text name=housePrice placeholder="Enter the Price"/>
         <input class="w-[50%] h-[50px] pl-1.5 border-2 border-blue-950 mt-1.5" type=text name=houseRooms placeholder="Enter House Rooms"/>
-        <input class="w-[50%] h-[50px] pl-1.5 border-2 border-blue-950 mt-1.5" type=text name=houseImg placeholder="Enter The Image Url"/>
+        <input class="w-[50%] h-[50px] pl-1.5 border-2 border-blue-950 mt-1.5" type=file  name=houseImg />
         <input class="w-[15%] h-[40px] pl-1.5 cursor-pointer border-2 border-blue-950 mt-1.5 hover:text-white hover:bg-black hover:border-none mb-2.5" type='submit' /> 
     </form>
 <%- include('../partials/footer')%>
